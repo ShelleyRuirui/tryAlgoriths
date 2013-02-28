@@ -51,7 +51,7 @@ public class CalcNthInArray {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] input={32,4,3,5,24,7,8,2,12,8,5,9};
-		System.out.println(findNth(input,10));
+		System.out.println(findNth(input,input.length/2));
 	}
 
 }
