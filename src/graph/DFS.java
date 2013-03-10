@@ -9,6 +9,22 @@ public class DFS<T> {
 	int clock2[];
 	int tick=0;
 	StringBuilder currentPath=new StringBuilder("");
+	
+	public DFS(){
+		
+	}
+	
+	public DFS(Graph<T> g) throws EdgeVerticeNotFound{
+		ArrayList<T> vertices=g.getAllVertices();
+		
+		int size=vertices.size();
+		visited=new boolean[size];
+		clock=new int[size];
+		clock2=new int[size];
+		for(int i=0;i<size;i++){
+			visited[i]=false;
+		}
+	}
 
 	public void DFSSearch(Graph<T> g) throws EdgeVerticeNotFound{
 		ArrayList<T> vertices=g.getAllVertices();

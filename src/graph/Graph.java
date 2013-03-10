@@ -20,6 +20,11 @@ public class Graph<T> {
 		}
 	}
 	
+	public void addEdgeInIndex(int i1,int i2) throws EdgeVerticeNotFound{
+		Edges<T> edges=vertices.get(i1);
+		edges.addEndVertice(vertices.get(i2).getStartVertice());
+	}
+	
 	private Edges<T> findVerEdges(T v) throws EdgeVerticeNotFound{
 		for(Edges<T> edge:vertices){
 			if(v.equals(edge.getStartVertice())){
@@ -57,13 +62,42 @@ public class Graph<T> {
 			System.out.println();
 		}
 	}
+	
+	public void deleteVerticeByIndex(int index) throws EdgeVerticeNotFound{
+		T ver=vertices.get(index).getStartVertice();
+		vertices.remove(index);
+		for(Edges<T> edges:vertices){
+			edges.removeEdge(ver);
+		}
+	}
+	
+	public Graph<T> createReversedGraph() throws EdgeVerticeNotFound{
+		Graph<T> graph=new Graph<T>();
+		ArrayList<T> allVertices=getAllVertices();
+		for(T ver:allVertices){
+			graph.addVertice(ver);
+		}
+		for(Edges<T> edges:vertices){
+			T startVer=edges.getStartVertice();
+			ArrayList<T> vers=edges.edges;
+			for(int i=1;i<vers.size();i++){
+				graph.addEdgeWithDirection(vers.get(i),startVer);
+			}
+		}
+		return graph;
+	}
+	
+	public boolean containsEdge(T v1,T v2) throws EdgeVerticeNotFound{
+		Edges<T> edges=findVerEdges(v1);
+		return edges.containsEnd(v2);
+	}
 
 	/**
 	 * @param args
 	 * @throws EdgeVerticeNotFound 
 	 */
 	public static void main(String[] args) throws EdgeVerticeNotFound {
-		test1();
+		test2();
 	}
 	
 	public static void test1() throws EdgeVerticeNotFound{
@@ -107,8 +141,28 @@ public class Graph<T> {
 		dfs.DFSSearch(graph);
 	}
 	
-	public static void test2(){
+	public static void test2() throws EdgeVerticeNotFound{
+		Graph<Character> graph=new Graph<Character>();
+		graph.addVertice('A');
+		graph.addVertice('C');
+		graph.addVertice('D');
+		graph.addVertice('B');
 		
+		graph.addEdgeWithDirection('A', 'C');
+		graph.addEdgeWithDirection('A', 'D');
+		graph.addEdgeWithDirection('A', 'B');
+		
+		graph.addEdgeWithDirection('B', 'A');
+		graph.addEdgeWithDirection('B', 'C');
+		graph.addEdgeWithDirection('C', 'A');
+		graph.addEdgeWithDirection('C', 'B');
+		graph.addEdgeWithDirection('C', 'D');
+		graph.addEdgeWithDirection('D', 'A');
+		graph.addEdgeWithDirection('D', 'C');
+		
+		DFS<Character> dfs=new DFS<Character>();
+		dfs.DFSSearch(graph);
+
 	}
 
 }

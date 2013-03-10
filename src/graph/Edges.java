@@ -23,6 +23,29 @@ public class Edges<T> {
 		edges.add(v);
 	}
 	
+	public void removeEdge(T v) throws EdgeVerticeNotFound{
+		if(edges.size()<1)
+			throw new EdgeVerticeNotFound("In removeEdge");
+		for(int i=1;i<edges.size();i++){
+			if(edges.get(i).equals(v)){
+				edges.remove(i);
+				return;
+			}
+		}
+		
+	}
+	
+	public boolean containsEnd(T v) throws EdgeVerticeNotFound{
+		if(edges.size()<1)
+			throw new EdgeVerticeNotFound("In removeEdge");
+		for(int i=1;i<edges.size();i++){
+			if(edges.get(i).equals(v)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 
 	
 
