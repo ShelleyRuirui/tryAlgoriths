@@ -89,7 +89,7 @@ public class Graph<T> {
 	
 	public boolean containsEdge(T v1,T v2) throws EdgeVerticeNotFound{
 		Edges<T> edges=findVerEdges(v1);
-		return edges.containsEnd(v2);
+		return edges.containsEnd(v2)!=-1;
 	}
 
 	/**

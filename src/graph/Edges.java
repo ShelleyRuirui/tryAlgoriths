@@ -35,18 +35,20 @@ public class Edges<T> {
 		
 	}
 	
-	public boolean containsEnd(T v) throws EdgeVerticeNotFound{
+	public int containsEnd(T v) throws EdgeVerticeNotFound{
 		if(edges.size()<1)
 			throw new EdgeVerticeNotFound("In removeEdge");
 		for(int i=1;i<edges.size();i++){
 			if(edges.get(i).equals(v)){
-				return true;
+				return i;
 			}
 		}
-		return false;
+		return -1;
 	}
 	
 
-	
+	public ArrayList<T> getEdges(){
+		return edges;
+	}
 
 }
