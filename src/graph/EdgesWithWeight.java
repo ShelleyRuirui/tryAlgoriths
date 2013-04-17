@@ -32,4 +32,28 @@ public class EdgesWithWeight<T> extends Edges<T> {
 		return weight;
 	}
 	
+	public void decreaseOrDeleteEdge(T node,int value){
+		for(int i=1;i<edges.size();i++){
+			if(edges.get(i).equals(node)){
+				int curweight=weight.get(i);
+				if(curweight==value){
+					weight.remove(i);
+					edges.remove(i);
+				}else{
+					weight.set(i, curweight-value);
+				}
+			}
+		}
+	}
+	
+	public void addOrIncreaseReverseEdge(T node,int value) throws EdgeVerticeNotFound{
+		for(int i=1;i<edges.size();i++){
+			if(edges.get(i).equals(node)){
+				weight.set(i, weight.get(i)+value);
+				return;
+			}
+		}
+		addEndVertice(node,value);
+	}
+	
 }

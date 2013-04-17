@@ -24,13 +24,33 @@ public class GraphWithWeight<T>  {
 		}
 	}
 	
-	private EdgesWithWeight<T> findVerEdges(T v) throws EdgeVerticeNotFound{
+	public EdgesWithWeight<T> findVerEdges(T v) throws EdgeVerticeNotFound{
 		for(EdgesWithWeight<T> edge:vertices){
 			if(v.equals(edge.getStartVertice())){
 				return edge;
 			}
 		}
 		return null;
+	}
+	
+	public void decreaseOrDeleteEdge(T start,T end,int value) throws EdgeVerticeNotFound{
+		EdgesWithWeight<T> edges=findVerEdges(start);
+		edges.decreaseOrDeleteEdge(end, value);
+	}
+	
+	public void addOrIncreaseReverseEdge(T start,T end,int value) throws EdgeVerticeNotFound{
+		EdgesWithWeight<T> edges=findVerEdges(end);
+		edges.addOrIncreaseReverseEdge(start, value);
+	}
+	
+	public void printGraph(){
+		for(EdgesWithWeight<T> edge:vertices){
+			for(int i=0;i<edge.edges.size();i++){
+				int weight=edge.weight.get(i);
+				System.out.print(edge.edges.get(i)+"->("+weight+")");
+			}
+			System.out.println();
+		}
 	}
 	
 } 
