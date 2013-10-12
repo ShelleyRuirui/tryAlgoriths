@@ -7,7 +7,6 @@ public class KMP{
 	public static int indexOfSubString(String str,String sub){
 		int curIndex=0;
 		int subIndex=0;
-		boolean fastMove=false;
 		while(curIndex<str.length() && subIndex<sub.length()){
 			//If it matches
 			if(str.charAt(curIndex)==sub.charAt(subIndex)){
@@ -20,16 +19,8 @@ public class KMP{
 					curIndex++;  
 					continue;
 				}else{       //Match to some point
-					if(!fastMove){
-						subIndex=calcNewPos(subIndex,sub);
-						fastMove=true;
-						continue;
-					}else{
-						subIndex=0;
-						fastMove=false;
-						continue;
-					}
-					
+				    subIndex=calcNewPos(subIndex,sub);
+					continue;
 				}
 			}
 		}
@@ -71,8 +62,9 @@ public class KMP{
 	}
 	
 	private static void test1(){
-//		System.out.println(indexOfSubString("aabc","abc"));
+		System.out.println(indexOfSubString("aabc","abc"));
 		System.out.println(indexOfSubString("abbaaca","aac"));
+		System.out.println(indexOfSubString("abbaaca","aaa"));
 		System.out.println(indexOfSubString("baababa","ababa"));
 		System.out.println(indexOfSubString("abcdcabcdabcd","abcdab"));
 		System.out.println(indexOfSubString("bbc abcdab abcdabcdabde","abcdabd"));
