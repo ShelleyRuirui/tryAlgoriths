@@ -3,7 +3,7 @@ package basicstruct.stackusage;
 import java.util.Stack;
 
 //The problem is to calc the maximum area of a histogram
-//This is a solution from leetcode
+//This is a solution from leetcode https://oj.leetcode.com/problems/largest-rectangle-in-histogram/
 public class MaxHistoArea {
 
 	public int largestRectangleArea(int[] height){
