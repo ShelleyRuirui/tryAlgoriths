@@ -1,4 +1,4 @@
-package tree.binaryTree;
+package basicstruct.stackusage;
 
 //Problem 11.4 from "Introduction to algorithms"
 public class HashWithoutInit {

@@ -1,4 +1,4 @@
-package tree.binaryTree;
+package basicstruct.stackusage;
 
 //A queue that is easy to locate max value
 public class QueueCanReturnMax {
