@@ -2,6 +2,7 @@ package dynamic;
 
 /*
  *  gas stations: a1,a2...an and 200 miles every day, panelty (200-x)^2
+ *  Prob 6.2 from algorithms
  */
 public class TravelEveryday {
 
